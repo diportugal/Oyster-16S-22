@@ -16,7 +16,7 @@ require("genefilter")
 theme_set(theme_bw())
 
 
-#CREATING THE PHYLOSEQ OBJECT ####
+#creating the PHYLOSEQ object ####
 
 c_meta17data <- read.csv("Oyster_data_raw/cleanmetadata17")
   
@@ -24,6 +24,20 @@ asvtable17 <- fread("Oyster_data_raw/asvtable_de17.csv")
 
 run23 <- read.csv("Oyster_data_raw/Run123_taxa_complete.csv")
 
+#***************************************************************************************************************************************
+
+#Adding a Log2Fold Change Value Column ####
+
+view(c_meta17data)
+c_meta17data$L2FC <-logb(c_meta17data, RFTM_score.x)
+
+
+
+
+
+
+
+#***************************************************************************************************************************************
 
 ## CHANGING ROW NAMES FOR EACH DATA SET 
 rownames(c_meta17data) = c_meta17data$X
@@ -446,65 +460,6 @@ dim(sigPA_RFTMSW_neg)
 st_sigPA_RFTMSW_neg <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_neg), physeq))
 seq_sigPA_RFTMSW_neg <- as.data.frame(tax_table(st_sigPA_RFTMSW_neg))
 write.table(seq_sigPA_RFTMSW_neg, file="Reduced Tax Tables/PresAbs_RFTMSW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-
-
-
-###Site.x_OY_vs_NW (PAUSE)####
-resPA_RFTMSW <- results(ddsPA_PeasiteM, name="Site.x_OY_vs_NW")
-sigPA_RFTMSW <- resPA_RFTMSW[which(resPA_RFTMSW$padj < 0.05), ]
-dim(sigPA_RFTMSW)
-# 
-st_sigPA_RFTMSW <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW), physeq))
-seq_sigPA_RFTMSW <- as.data.frame(tax_table(st_sigPA_RFTMSW))
-write.table(seq_sigPA_RFTMSW, file="Reduced Tax Tables/PresAbs_RFTMSW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-#POSITIVE
-sigPA_RFTMSW_pos <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange>0,]
-dim(sigPA_RFTMSW_pos)
-# 
-st_sigPA_RFTMSW_pos <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW_pos), physeq))
-seq_sigPA_RFTMSW_pos <- as.data.frame(tax_table(st_sigPA_RFTMSW_pos))
-write.table(seq_sigPA_RFTMSW_pos, file="Reduced Tax Tables/PresAbs_RFTMSW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-#NEGATIVE
-sigPA_RFTMSW_neg <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange<0,]
-dim(sigPA_RFTMSW_neg)
-# 
-st_sigPA_RFTMSW_neg <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_neg), physeq))
-seq_sigPA_RFTMSW_neg <- as.data.frame(tax_table(st_sigPA_RFTMSW_neg))
-write.table(seq_sigPA_RFTMSW_neg, file="Reduced Tax Tables/PresAbs_RFTMSW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-
-
-
-
-###Site.x_SW_vs_NW (PAUSE)####
-resPA_RFTMSW <- results(ddsPA_rftmsiteM, name="RFTM_pa1.Site.xSW")
-sigPA_RFTMSW <- resPA_RFTMSW[which(resPA_RFTMSW$padj < 0.05), ]
-dim(sigPA_RFTMSW)
-# 
-st_sigPA_RFTMSW <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW), physeq))
-seq_sigPA_RFTMSW <- as.data.frame(tax_table(st_sigPA_RFTMSW))
-write.table(seq_sigPA_RFTMSW, file="Reduced Tax Tables/PresAbs_RFTMSW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-#POSITIVE
-sigPA_RFTMSW_pos <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange>0,]
-dim(sigPA_RFTMSW_pos)
-# 
-st_sigPA_RFTMSW_pos <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW_pos), physeq))
-seq_sigPA_RFTMSW_pos <- as.data.frame(tax_table(st_sigPA_RFTMSW_pos))
-write.table(seq_sigPA_RFTMSW_pos, file="Reduced Tax Tables/PresAbs_RFTMSW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-#NEGATIVE
-sigPA_RFTMSW_neg <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange<0,]
-dim(sigPA_RFTMSW_neg)
-# 
-st_sigPA_RFTMSW_neg <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_neg), physeq))
-seq_sigPA_RFTMSW_neg <- as.data.frame(tax_table(st_sigPA_RFTMSW_neg))
-write.table(seq_sigPA_RFTMSW_neg, file="Reduced Tax Tables/PresAbs_RFTMSW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
-
-
 
 
 ###peacrabs.f1.Site.xOY####
