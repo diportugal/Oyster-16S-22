@@ -26,19 +26,6 @@ run23 <- read.csv("Oyster_data_raw/Run123_taxa_complete.csv")
 
 #***************************************************************************************************************************************
 
-#Adding a Log2Fold Change Value Column ####
-
-view(c_meta17data)
-c_meta17data$L2FC <-logb(c_meta17data, RFTM_score.x)
-
-
-
-
-
-
-
-#***************************************************************************************************************************************
-
 ## CHANGING ROW NAMES FOR EACH DATA SET 
 rownames(c_meta17data) = c_meta17data$X
 c_meta17data$X=NULL
@@ -214,7 +201,7 @@ st_sigPA_pea
 seq_sigPA_pea <- as.data.frame(tax_table(st_sigPA_pea))
 
 #Creating Reduced Tax Tables for this variable
-write.table(seq_sigPA_pea, file="Reduced Tax Tables/PresAbs_PEA_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_pea, file="Reduced Tax Tables/PresAbs_PEA_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #Getting the +/- Log of this variable
@@ -243,7 +230,7 @@ st_sigPA_pea_neg
 
 seq_sigPA_pea_neg <- as.data.frame(tax_table(st_sigPA_pea_neg))
 
-write.table(seq_sigPA_pea_neg, file="Reduced Tax Tables/PresAbs_PEA_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_pea_neg, file="Reduced Tax Tables/PresAbs_PEA_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 
@@ -259,7 +246,7 @@ st_sigPA_rftmpea
 seq_sigPA_rftmpea <- as.data.frame(tax_table(st_sigPA_rftmpea))
 
 #Creating Reduced Tax Tables for this variable
-write.table(seq_sigPA_rftmpea, file="Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftmpea, file="Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #Getting the +/- Log of this variable
@@ -275,7 +262,7 @@ st_sigPA_rftmpea_pos
 seq_sigPA_rftmpea_pos <- as.data.frame(tax_table(st_sigPA_rftmpea_pos))
 
 #Creating Reduced Tax Tables for this variable
-write.table(seq_sigPA_rftmpea_pos, file="Reduced Tax Tables/PresAbs_RFTMPEA_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftmpea_pos, file="Reduced Tax Tables/PresAbs_RFTMPEA_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #NEGATIVE
@@ -288,7 +275,7 @@ st_sigPA_rftmpea_neg
 
 seq_sigPA_rftmpea_neg <- as.data.frame(tax_table(st_sigPA_rftmpea_neg))
 
-write.table(seq_sigPA_rftmpea_neg, file="Reduced Tax Tables/PresAbs_RFTMPEA_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftmpea_neg, file="Reduced Tax Tables/PresAbs_RFTMPEA_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #***************************************************************************************************************************************
@@ -360,7 +347,7 @@ dim(sigPA_siteOYNW)
 # 313 6
 st_sigPA_siteOYNW <- subset_taxa(prune_taxa(rownames(sigPA_siteOYNW), physeq))
 seq_sigPA_siteOYNW <- as.data.frame(tax_table(st_sigPA_siteOYNW))
-write.table(seq_sigPA_siteOYNW, file="Reduced Tax Tables/PresAbs_SITEOYNW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteOYNW, file="Reduced Tax Tables/PresAbs_SITEOYNW_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_siteOYNW_pos <- sigPA_siteOYNW[sigPA_siteOYNW$log2FoldChange>0,]
@@ -368,7 +355,7 @@ dim(sigPA_siteOYNW_pos)
 # 176 6
 st_sigPA_siteOYNW_pos <- subset_taxa(prune_taxa(rownames(sigPA_siteOYNW_pos), physeq))
 seq_sigPA_siteOYNW_pos <- as.data.frame(tax_table(st_sigPA_siteOYNW_pos))
-write.table(seq_sigPA_siteOYNW_pos, file="Reduced Tax Tables/PresAbs_SITEOYNW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteOYNW_pos, file="Reduced Tax Tables/PresAbs_SITEOYNW_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_siteOYNW_neg <- sigPA_siteOYNW[sigPA_siteOYNW$log2FoldChange<0,]
@@ -376,7 +363,7 @@ dim(sigPA_siteOYNW_neg)
 # 137 6
 st_sigPA_siteOYNW_neg <- subset_taxa(prune_taxa(rownames(sigPA_siteOYNW_neg), physeq))
 seq_sigPA_siteOYNW_neg <- as.data.frame(tax_table(st_sigPA_siteOYNW_neg))
-write.table(seq_sigPA_siteOYNW_neg, file="Reduced Tax Tables/PresAbs_SITEOYNW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteOYNW_neg, file="Reduced Tax Tables/PresAbs_SITEOYNW_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 
@@ -388,7 +375,7 @@ dim(sigPA_siteSWNW)
 # 295 6
 st_sigPA_siteSWNW <- subset_taxa(prune_taxa(rownames(sigPA_siteSWNW), physeq))
 seq_sigPA_siteSWNW <- as.data.frame(tax_table(st_sigPA_siteSWNW))
-write.table(seq_sigPA_siteSWNW, file="Reduced Tax Tables/PresAbs_SITESWNW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteSWNW, file="Reduced Tax Tables/PresAbs_SITESWNW_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_siteSWNW_pos <- sigPA_siteSWNW[sigPA_siteSWNW$log2FoldChange>0,]
@@ -396,7 +383,7 @@ dim(sigPA_siteSWNW_pos)
 # 185 6
 st_sigPA_siteSWNW_pos <- subset_taxa(prune_taxa(rownames(sigPA_siteSWNW_pos), physeq))
 seq_sigPA_siteSWNW_pos <- as.data.frame(tax_table(st_sigPA_siteSWNW_pos))
-write.table(seq_sigPA_siteSWNW_pos, file="Reduced Tax Tables/PresAbs_SITESWNW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteSWNW_pos, file="Reduced Tax Tables/PresAbs_SITESWNW_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_siteSWNW_neg <- sigPA_siteSWNW[sigPA_siteSWNW$log2FoldChange<0,]
@@ -404,7 +391,7 @@ dim(sigPA_siteSWNW_neg)
 # 110 6
 st_sigPA_siteSWNW_neg <- subset_taxa(prune_taxa(rownames(sigPA_siteSWNW_neg), physeq))
 seq_sigPA_siteSWNW_neg <- as.data.frame(tax_table(st_sigPA_siteSWNW_neg))
-write.table(seq_sigPA_siteSWNW_neg, file="Reduced Tax Tables/PresAbs_SITESWNW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_siteSWNW_neg, file="Reduced Tax Tables/PresAbs_SITESWNW_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 
@@ -415,7 +402,7 @@ dim(sigPA_RFTMOY)
 # 184 6
 st_sigPA_RFTMOY <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY), physeq))
 seq_sigPA_RFTMOY <- as.data.frame(tax_table(st_sigPA_RFTMOY))
-write.table(seq_sigPA_RFTMOY, file="Reduced Tax Tables/PresAbs_RFTMOY_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMOY, file="Reduced Tax Tables/PresAbs_RFTMOY_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_RFTMOY_pos <- sigPA_RFTMOY[sigPA_RFTMOY$log2FoldChange>0,]
@@ -423,7 +410,7 @@ dim(sigPA_RFTMOY_pos)
 # 111 6
 st_sigPA_RFTMOY_pos <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_pos), physeq))
 seq_sigPA_RFTMOY_pos <- as.data.frame(tax_table(st_sigPA_RFTMOY_pos))
-write.table(seq_sigPA_RFTMOY_pos, file="Reduced Tax Tables/PresAbs_RFTMOY_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMOY_pos, file="Reduced Tax Tables/PresAbs_RFTMOY_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_RFTMOY_neg <- sigPA_RFTMOY[sigPA_RFTMOY$log2FoldChange<0,]
@@ -431,7 +418,7 @@ dim(sigPA_RFTMOY_neg)
 # 73 6
 st_sigPA_RFTMOY_neg <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_neg), physeq))
 seq_sigPA_RFTMOY_neg <- as.data.frame(tax_table(st_sigPA_RFTMOY_neg))
-write.table(seq_sigPA_RFTMOY_neg, file="Reduced Tax Tables/PresAbs_RFTMOY_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMOY_neg, file="Reduced Tax Tables/PresAbs_RFTMOY_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 
@@ -443,7 +430,7 @@ dim(sigPA_RFTMSW)
 # 209 6
 st_sigPA_RFTMSW <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW), physeq))
 seq_sigPA_RFTMSW <- as.data.frame(tax_table(st_sigPA_RFTMSW))
-write.table(seq_sigPA_RFTMSW, file="Reduced Tax Tables/PresAbs_RFTMSW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMSW, file="Reduced Tax Tables/PresAbs_RFTMSW_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_RFTMSW_pos <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange>0,]
@@ -451,7 +438,7 @@ dim(sigPA_RFTMSW_pos)
 # 124 6
 st_sigPA_RFTMSW_pos <- subset_taxa(prune_taxa(rownames(sigPA_RFTMSW_pos), physeq))
 seq_sigPA_RFTMSW_pos <- as.data.frame(tax_table(st_sigPA_RFTMSW_pos))
-write.table(seq_sigPA_RFTMSW_pos, file="Reduced Tax Tables/PresAbs_RFTMSW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMSW_pos, file="Reduced Tax Tables/PresAbs_RFTMSW_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_RFTMSW_neg <- sigPA_RFTMSW[sigPA_RFTMSW$log2FoldChange<0,]
@@ -459,7 +446,7 @@ dim(sigPA_RFTMSW_neg)
 # 85 6
 st_sigPA_RFTMSW_neg <- subset_taxa(prune_taxa(rownames(sigPA_RFTMOY_neg), physeq))
 seq_sigPA_RFTMSW_neg <- as.data.frame(tax_table(st_sigPA_RFTMSW_neg))
-write.table(seq_sigPA_RFTMSW_neg, file="Reduced Tax Tables/PresAbs_RFTMSW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_RFTMSW_neg, file="Reduced Tax Tables/PresAbs_RFTMSW_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 ###peacrabs.f1.Site.xOY####
@@ -469,7 +456,7 @@ dim(sigPA_PeaOY)
 # 52 6 
 st_sigPA_PeaOY <- subset_taxa(prune_taxa(rownames(sigPA_PeaOY), physeq))
 seq_sigPA_PeaOY <- as.data.frame(tax_table(st_sigPA_PeaOY))
-write.table(seq_sigPA_PeaOY, file="Reduced Tax Tables/PresAbs_PEAOY_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaOY, file="Reduced Tax Tables/PresAbs_PEAOY_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_PeaOY_pos <- sigPA_PeaOY[sigPA_PeaOY$log2FoldChange>0,]
@@ -477,7 +464,7 @@ dim(sigPA_PeaOY_pos)
 # 29 6
 st_sigPA_PeaOY_pos <- subset_taxa(prune_taxa(rownames(sigPA_PeaOY_pos), physeq))
 seq_sigPA_PeaOY_pos <- as.data.frame(tax_table(st_sigPA_PeaOY_pos))
-write.table(seq_sigPA_PeaOY_pos, file="Reduced Tax Tables/PresAbs_PEAOY_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaOY_pos, file="Reduced Tax Tables/PresAbs_PEAOY_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_PeaOY_neg <- sigPA_PeaOY[sigPA_PeaOY$log2FoldChange<0,]
@@ -485,7 +472,7 @@ dim(sigPA_PeaOY_neg)
 # 23 6
 st_sigPA_PeaOY_neg <- subset_taxa(prune_taxa(rownames(sigPA_PeaOY_neg), physeq))
 seq_sigPA_PeaOY_neg <- as.data.frame(tax_table(st_sigPA_PeaOY_neg))
-write.table(seq_sigPA_PeaOY_neg, file="Reduced Tax Tables/PresAbs_PEAOY_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaOY_neg, file="Reduced Tax Tables/PresAbs_PEAOY_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 
@@ -498,7 +485,7 @@ dim(sigPA_PeaSW)
 # 37 6
 st_sigPA_PeaSW <- subset_taxa(prune_taxa(rownames(sigPA_PeaSW), physeq))
 seq_sigPA_PeaSW <- as.data.frame(tax_table(st_sigPA_PeaSW))
-write.table(seq_sigPA_PeaSW, file="Reduced Tax Tables/PresAbs_PEASW_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaSW, file="Reduced Tax Tables/PresAbs_PEASW_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 #POSITIVE
 sigPA_PeaSW_pos <- sigPA_PeaSW[sigPA_PeaSW$log2FoldChange>0,]
@@ -506,7 +493,7 @@ dim(sigPA_PeaSW_pos)
 # 8 6
 st_sigPA_PeaSW_pos <- subset_taxa(prune_taxa(rownames(sigPA_PeaSW_pos), physeq))
 seq_sigPA_PeaSW_pos <- as.data.frame(tax_table(st_sigPA_PeaSW_pos))
-write.table(seq_sigPA_PeaSW_pos, file="Reduced Tax Tables/PresAbs_PEASW_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaSW_pos, file="Reduced Tax Tables/PresAbs_PEASW_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 #NEGATIVE
 sigPA_PeaSW_neg <- sigPA_PeaSW[sigPA_PeaSW$log2FoldChange<0,]
@@ -514,6 +501,6 @@ dim(sigPA_PeaSW_neg)
 # 29 6
 st_sigPA_PeaSW_neg <- subset_taxa(prune_taxa(rownames(sigPA_PeaSW_neg), physeq))
 seq_sigPA_PeaSW_neg <- as.data.frame(tax_table(st_sigPA_PeaSW_neg))
-write.table(seq_sigPA_PeaSW_neg, file="Reduced Tax Tables/PresAbs_PEASW_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_PeaSW_neg, file="Reduced Tax Tables/PresAbs_PEASW_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
