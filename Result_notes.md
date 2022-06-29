@@ -1,18 +1,8 @@
-<<<<<<< HEAD:Results Notes .Rmd
----
-title: "Notes For Results"
-author: "Diana Portugal"
-date: "6/28/2022"
-output: "html_document"
----
-
-
 
 # Results 
-**The relationships that resulted included:**
-=======
+
 # **The relationships that resulted included:**
->>>>>>> a0846444b73362e13382985b34186ebf2a94e6be:Result_notes.md
+
 
 * peacrabs.f_1_vs_0 | (Peacrabs presence absence)
 
@@ -40,6 +30,6 @@ output: "html_document"
 ## RFTM_pa1.Site.xSW 
 ## peacrabs.f1.Site.xOY
 ## peacrabs.f1.Site.xSW
-a
+
 
 
