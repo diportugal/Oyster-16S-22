@@ -170,7 +170,7 @@ st_sigPA_rftm
 seq_sigPA_rftm <- as.data.frame(tax_table(st_sigPA_rftm))
 
 #Creating Reduced Tax Tables for this variable
-write.table(seq_sigPA_rftm, file="Reduced Tax Tables/PresAbs_RFTM_COMP.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftm, file="Reduced Tax Tables/PresAbs_RFTM_COMP.csv", quote=FALSE,sep = ",", col.names=T)
             
 
 #Getting the +/- Log of this variable
@@ -186,7 +186,7 @@ st_sigPA_rftm_pos
 seq_sigPA_rftm_pos <- as.data.frame(tax_table(st_sigPA_rftm_pos))
 
 #Creating Reduced Tax Tables for this variable
-write.table(seq_sigPA_rftm_pos, file="Reduced Tax Tables/PresAbs_RFTM_POS.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftm_pos, file="Reduced Tax Tables/PresAbs_RFTM_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #NEGATIVE
@@ -199,7 +199,7 @@ st_sigPA_rftm_neg
 
 seq_sigPA_rftm_neg <- as.data.frame(tax_table(st_sigPA_rftm_neg))
 
-write.table(seq_sigPA_rftm_neg, file="Reduced Tax Tables/PresAbs_RFTM_NEG.csv", quote=FALSE,sep = ",", col.names=FALSE)
+write.table(seq_sigPA_rftm_neg, file="Reduced Tax Tables/PresAbs_RFTM_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 ###peacrabs.f_1_vs_0####
