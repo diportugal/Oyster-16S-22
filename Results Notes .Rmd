@@ -5,57 +5,27 @@ date: "6/28/2022"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Results 
-
-The relationships that resulted included:
 
 
-* peacrabs.f_1_vs_0
-    + [Grey]*Peacrabs presence absence* 
-* RFTM_pa1.peacrabs.f1
-    + RFTM score and Peacrab presence absence
-* RFTM_pa_1_vs_0
-    + RFTM score presence absence
-* Site.x_OY_vs_NW
-    + Site OY and Site NW
-* Site.x_SW_vs_NW
-    + Site SW and Site NW
-* RFTM_pa1.Site.xOY
-    + RFTM score presence absence and Site OY
-* RFTM_pa1.Site.xSW
-    + RFTM score presence absence and Site SW
-* peacrabs.f1.Site.xOY
-    + Peacrabs presence absence and Site OY
-* peacrabs.f1.Site.xSW
-    + Peacrabs presence absence and Site SW
+# Results 
+**The relationships that resulted included:**
+
+* peacrabs.f_1_vs_0 | (Peacrabs presence absence)
+
+* RFTM_pa1.peacrabs.f1 | (RFTM score and Peacrab presence absence)
+
+* RFTM_pa_1_vs_0 | (RFTM score presence absence)
+
+* Site.x_OY_vs_NW | (Site OY and Site NW)
+
+* Site.x_SW_vs_NW | (Site SW and Site NW)
+
+* RFTM_pa1.Site.xOY | (RFTM score presence absence and Site OY)
+
+* RFTM_pa1.Site.xSW | (RFTM score presence absence and Site SW)
+
+* peacrabs.f1.Site.xOY| (Peacrabs presence absence and Site OY)
+
+* peacrabs.f1.Site.xSW | (Peacrabs presence absence and Site SW)
 
 
-
-* unordered list
-* item 2
-    + sub-item 1
-    + sub-item 2
-
-1. ordered list
-2. item 2
-    + sub-item 1
-    + sub-item 2 
-
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
