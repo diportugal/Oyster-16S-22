@@ -143,7 +143,7 @@ phyloPEASW_PA <- phyloseq(OTU, PEASWpa_comp, SAMP)
 phyloPEASW_PA
 
 
-#PHYLOSEQ OBJECTS####
+# PHYLOSEQ OBJECTS ####
 #phyloPEA_PA
 #phyloRFTMPEA_PA
 #phyloRFTM_PA
@@ -155,14 +155,67 @@ phyloPEASW_PA
 #phyloPEASW_PA
 
 
+# TAXONOMY TABLE ID ####
+#PEApa_comp
+#RFTMPEApa_comp
+#RFTMpa_comp
+#SITEOYNWpa_comp
+#SITESWNWpa_comp
+#RFTMOYpa_comp
+#RFTMSWpa_comp
+#PEAOYpa_comp
+#PEASWpa_comp
 
-##### Figuring out the number of class groupings for RFTM_PA ####
-numof_class_RFTMpa <- RFTM_pa %>% 
-  group_by(Class)%>% 
-  summarise(Number_of  = n())
-view(numof_class_RFTMpa)
 
 
+##### Figuring out the number of class groupings for each ID ####
+
+#PEApa_comp
+PEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEA_COMP.csv") 
+PEApa_tax_tab <- table(PEApa_tax$Class, useNA = "ifany")
+view(PEApa_tax_tab)
+
+#RFTMPEApa_comp
+RFTMPEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv") 
+RFTMPEApa_tax_tab <- table(RFTMPEApa_tax$Class, useNA = "ifany")
+view(RFTMPEApa_tax_tab)
+
+#RFTMpa_comp
+RFTMpa_tax <- read.csv("Reduced Tax Tables/PresAbs_RFTM_COMP.csv") 
+RFTMpa_tax_tab <- table(RFTMpa_tax$Class, useNA = "ifany")
+view(RFTMpa_tax_tab)
+
+
+#SITEOYNWpa_comp
+SITEOYNWpa_tax <- read.csv("Reduced Tax Tables/PresAbs_SITEOYNW_COMP.csv") 
+SITEOYNWpa_tax_tab <- table(SITEOYNWpa_tax$Class, useNA = "ifany")
+view(SITEOYNWpa_tax_tab)
+
+#SITESWNWpa_comp
+SITESWNWpa_tax <- read.csv("Reduced Tax Tables/PresAbs_SITESWNW_COMP.csv") 
+SITESWNWpa_tax_tab <- table(SITESWNWpa_tax$Class, useNA = "ifany")
+view(SITESWNWpa_tax_tab)
+
+#RFTMOYpa_comp
+RFTMOYpa_tax <- read.csv("Reduced Tax Tables/PresAbs_RFTMOY_COMP.csv") 
+RFTMOYpa_tax_tab <- table(RFTMOYpa_tax$Class, useNA = "ifany")
+view(RFTMOYpa_tax_tab)
+
+#RFTMSWpa_comp
+RFTMSWpa_tax <- read.csv("Reduced Tax Tables/PresAbs_RFTMSW_COMP.csv") 
+RFTMSWpa_tax_tab <- table(RFTMSWpa_tax$Class, useNA = "ifany")
+view(RFTMSWpa_tax_tab)
+
+#PEAOYpa_comp
+PEAOYpa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEAOY_COMP.csv") 
+PEAOYpa_tax_tab <- table(PEAOYpa_tax$Class, useNA = "ifany")
+view(PEAOYpa_tax_tab)
+
+
+#PEASWpa_comp
+PEASWpa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEASW_COMP.csv") 
+PEASWpa_tax_tab <- table(PEASWpa_tax$Class, useNA = "ifany")
+view(PEASWpa_tax_tab)
 
 
 ##### Abundance Plot for RFTM_PA ####
@@ -327,7 +380,6 @@ plot_bar(phyloPEASW_PA, fill="Class")+
        x = "Sample ID",
        y = "Abundance")
 ggsave(filename = "Abun_PEASWpa_class.jpeg", plot=last_plot(), path ="PEA_RFTM/G_RFTM_pa/", width = 15, height = 10)
-
 
 
 

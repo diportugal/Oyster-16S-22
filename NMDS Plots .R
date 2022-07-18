@@ -13,6 +13,20 @@
 #phyloPEASW_PA
 
 
+
+
+
+
+numof_phyloPEA <- phyloPEA_PA %>% 
+  group_by(Class)%>% 
+  summarise(Number_of  = n())
+view(numof_phyloPEA)
+
+
+
+
+
+
 ##### Plot Richness for RFTM_PA####
 plot_richness(phyloRFTM_PA, x="RFTM_pa", measures = c("Observed", "Chao", "Simpson", "Shannon"))+
   geom_boxplot()+
