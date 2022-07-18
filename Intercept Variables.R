@@ -30,6 +30,7 @@ run23 <- read.csv("Oyster_data_raw/Run123_taxa_complete.csv")
 rownames(c_meta17data) = c_meta17data$X
 c_meta17data$X=NULL
 rownames(c_meta17data)
+view(c_meta17data)
 #ROW NAMES ARE THE UNIQUE IDs 
 
 rownames(asvtable17) = asvtable17$V1
