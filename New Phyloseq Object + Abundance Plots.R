@@ -175,6 +175,12 @@ PEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEA_COMP.csv")
 PEApa_tax_tab <- table(PEApa_tax$Class, useNA = "ifany")
 view(PEApa_tax_tab)
 
+PEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEA_COMP.csv") 
+PEApa_tax_ord <- table(PEApa_tax$Order, useNA = "ifany")
+view(PEApa_tax_ord)
+
+
+
 #RFTMPEApa_comp
 RFTMPEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv") 
 RFTMPEApa_tax_tab <- table(RFTMPEApa_tax$Class, useNA = "ifany")

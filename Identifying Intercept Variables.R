@@ -150,6 +150,7 @@ resultsNames(ddsPA_rftmpeaM)
 resPA_rftm <- results(ddsPA_rftmpeaM, name="RFTM_pa_1_vs_0")
 sigPA_rftm <- resPA_rftm[which(resPA_rftm$padj < 0.05), ]
 dim(sigPA_rftm)
+view(sigPA_rftm)
 #148 6
 
 st_sigPA_rftm <- subset_taxa(prune_taxa(rownames(sigPA_rftm), physeq))
@@ -318,11 +319,6 @@ resultsNames(ddsPA_PeasiteM)
 
 
 
-
-
-
-
-
 ddsPA_rftmsiteM
 ##Site.x_OY_vs_NW
 ##Site.x_SW_vs_NW
@@ -333,10 +329,6 @@ ddsPA_PeasiteM
 ##Site.x_SW_vs_NW --- 
 ##peacrabs.f1.Site.xOY
 ##peacrabs.f1.Site.xSW
-
-
-
-
 
 
 
