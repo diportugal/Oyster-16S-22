@@ -20,8 +20,6 @@ view(physeqlog_sig)
 
 
 
-
-
 ---------------------------------------------------------------------------------------------------
 
 ddsPA_rftmpeaM <- phyloseq_to_deseq2(physeq, ~ RFTM_pa * peacrabs.f)
@@ -39,6 +37,8 @@ names(sigPA_rftm)[names(sigPA_rftm) == "Genus.x"] <- "Genus"
 view(sigPA_rftm)
 dim(sigPA_rftm)
 #458 8
+write.table(sigPA_rftm, file="Log2Fold/RFTMpa_compLog.csv", quote=FALSE,sep = ",", col.names=T)
+
 
 
 ###peacrabs.f_1_vs_0####

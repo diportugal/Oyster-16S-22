@@ -129,7 +129,6 @@ view(SAMP)
 ddsPA_rftmpeaP <- phyloseq_to_deseq2(physeq, ~ RFTM_pa + peacrabs.f)
 ddsPA_rftmpeaP <- DESeq(ddsPA_rftmpeaP, test="Wald", fitType="parametric")
 resultsNames(ddsPA_rftmpeaP)
-
 #Result Names
 #RFTM_pa_1_vs_0
 #peacrabs.f_1_vs_0
@@ -138,7 +137,6 @@ resultsNames(ddsPA_rftmpeaP)
 ddsPA_rftmpeaM <- phyloseq_to_deseq2(physeq, ~ RFTM_pa * peacrabs.f)
 ddsPA_rftmpeaM <- DESeq(ddsPA_rftmpeaM, test="Wald", fitType="parametric")
 resultsNames(ddsPA_rftmpeaM)
-
 #Result Names
 #RFTM_pa_1_vs_0
 #peacrabs.f_1_vs_0
@@ -152,28 +150,21 @@ sigPA_rftm <- resPA_rftm[which(resPA_rftm$padj < 0.05), ]
 dim(sigPA_rftm)
 view(sigPA_rftm)
 #148 6
-
 st_sigPA_rftm <- subset_taxa(prune_taxa(rownames(sigPA_rftm), physeq))
 st_sigPA_rftm
-
 seq_sigPA_rftm <- as.data.frame(tax_table(st_sigPA_rftm))
-
 #Creating Reduced Tax Tables for this variable
 write.table(seq_sigPA_rftm, file="Reduced Tax Tables/PresAbs_RFTM_COMP.csv", quote=FALSE,sep = ",", col.names=T)
             
 
 #Getting the +/- Log of this variable
-
 #POSITIVE
 sigPA_rftm_pos <- sigPA_rftm[sigPA_rftm$log2FoldChange>0,]
 dim(sigPA_rftm_pos)
 # 77 6
-
 st_sigPA_rftm_pos <- subset_taxa(prune_taxa(rownames(sigPA_rftm_pos), physeq))
 st_sigPA_rftm_pos
-
 seq_sigPA_rftm_pos <- as.data.frame(tax_table(st_sigPA_rftm_pos))
-
 #Creating Reduced Tax Tables for this variable
 write.table(seq_sigPA_rftm_pos, file="Reduced Tax Tables/PresAbs_RFTM_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
@@ -182,12 +173,9 @@ write.table(seq_sigPA_rftm_pos, file="Reduced Tax Tables/PresAbs_RFTM_POS.csv", 
 sigPA_rftm_neg <- sigPA_rftm[sigPA_rftm$log2FoldChange<0,]
 dim(sigPA_rftm_neg)
 # 71 6
-
 st_sigPA_rftm_neg <- subset_taxa(prune_taxa(rownames(sigPA_rftm_neg), physeq))
 st_sigPA_rftm_neg
-
 seq_sigPA_rftm_neg <- as.data.frame(tax_table(st_sigPA_rftm_neg))
-
 write.table(seq_sigPA_rftm_neg, file="Reduced Tax Tables/PresAbs_RFTM_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
@@ -196,20 +184,15 @@ resPA_pea <- results(ddsPA_rftmpeaM, name="peacrabs.f_1_vs_0")
 sigPA_pea <- resPA_pea[which(resPA_pea$padj < 0.05), ]
 dim(sigPA_pea)
 # 66 6
-
 st_sigPA_pea <- subset_taxa(prune_taxa(rownames(sigPA_pea), physeq))
 st_sigPA_pea
-
 seq_sigPA_pea <- as.data.frame(tax_table(st_sigPA_pea))
-
 #Creating Reduced Tax Tables for this variable
 write.table(seq_sigPA_pea, file="Reduced Tax Tables/PresAbs_PEA_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #Getting the +/- Log of this variable
-
 #POSITIVE - DOES NOT WORK BECAUSE THERE ARE NO POSITIVE VALUES
-
 #sigPA_pea
 #sigPA_pea_pos <- sigPA_pea[sigPA_pea$log2FoldChange>0,]
 #dim(sigPA_pea_pos)
@@ -222,16 +205,12 @@ write.table(seq_sigPA_pea, file="Reduced Tax Tables/PresAbs_PEA_COMP.csv", quote
 
 
 #NEGATIVE - WILL BE THE SAME AS THE COMPLETE DATA SET 
-
 sigPA_pea_neg <- sigPA_pea[sigPA_pea$log2FoldChange<0,]
 dim(sigPA_pea_neg)
 # 66 6
-
 st_sigPA_pea_neg <- subset_taxa(prune_taxa(rownames(sigPA_pea_neg), physeq))
 st_sigPA_pea_neg
-
 seq_sigPA_pea_neg <- as.data.frame(tax_table(st_sigPA_pea_neg))
-
 write.table(seq_sigPA_pea_neg, file="Reduced Tax Tables/PresAbs_PEA_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
@@ -241,28 +220,21 @@ resPA_rftmpea <- results(ddsPA_rftmpeaM, name="RFTM_pa1.peacrabs.f1")
 sigPA_rftmpea <- resPA_rftmpea[which(resPA_rftmpea$padj < 0.05), ]
 dim(sigPA_rftmpea)
 #33 6
-
 st_sigPA_rftmpea <- subset_taxa(prune_taxa(rownames(sigPA_rftmpea), physeq))
 st_sigPA_rftmpea
-
 seq_sigPA_rftmpea <- as.data.frame(tax_table(st_sigPA_rftmpea))
-
 #Creating Reduced Tax Tables for this variable
 write.table(seq_sigPA_rftmpea, file="Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv", quote=FALSE,sep = ",", col.names=T)
 
 
 #Getting the +/- Log of this variable
-
 #POSITIVE
 sigPA_rftmpea_pos <- sigPA_rftmpea[sigPA_rftmpea$log2FoldChange>0,]
 dim(sigPA_rftmpea_pos)
 # 25 6
-
 st_sigPA_rftmpea_pos <- subset_taxa(prune_taxa(rownames(sigPA_rftmpea_pos), physeq))
 st_sigPA_rftmpea_pos
-
 seq_sigPA_rftmpea_pos <- as.data.frame(tax_table(st_sigPA_rftmpea_pos))
-
 #Creating Reduced Tax Tables for this variable
 write.table(seq_sigPA_rftmpea_pos, file="Reduced Tax Tables/PresAbs_RFTMPEA_POS.csv", quote=FALSE,sep = ",", col.names=T)
 
@@ -271,12 +243,9 @@ write.table(seq_sigPA_rftmpea_pos, file="Reduced Tax Tables/PresAbs_RFTMPEA_POS.
 sigPA_rftmpea_neg <- sigPA_rftmpea[sigPA_rftmpea$log2FoldChange<0,]
 dim(sigPA_rftmpea_neg)
 # 8 6
-
 st_sigPA_rftmpea_neg <- subset_taxa(prune_taxa(rownames(sigPA_rftmpea_neg), physeq))
 st_sigPA_rftmpea_neg
-
 seq_sigPA_rftmpea_neg <- as.data.frame(tax_table(st_sigPA_rftmpea_neg))
-
 write.table(seq_sigPA_rftmpea_neg, file="Reduced Tax Tables/PresAbs_RFTMPEA_NEG.csv", quote=FALSE,sep = ",", col.names=T)
 
 
@@ -299,7 +268,6 @@ resultsNames(ddsPA_rftmsiteP)
 #RFTM_pa_1_vs_0
 #Site.x_OY_vs_NW
 #Site.x_SW_vs_NW
-
 
 ddsPA_PeasiteP <- phyloseq_to_deseq2(physeq, ~ peacrabs.f + Site.x)
 ddsPA_PeasiteP <- DESeq(ddsPA_PeasiteP, test="Wald", fitType="parametric")

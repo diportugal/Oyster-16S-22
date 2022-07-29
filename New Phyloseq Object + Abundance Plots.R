@@ -10,7 +10,6 @@ library(ggpubr)
 physeq = phyloseq(OTU, TAX, SAMP) 
 physeq
 
-
     
 # CREATING NEW PHYLOSEQ OBJECTS ####
 ##peacrabs.f_1_vs_0
@@ -178,7 +177,6 @@ view(PEApa_tax_tab)
 PEApa_tax <- read.csv("Reduced Tax Tables/PresAbs_PEA_COMP.csv") 
 PEApa_tax_ord <- table(PEApa_tax$Order, useNA = "ifany")
 view(PEApa_tax_ord)
-
 
 
 #RFTMPEApa_comp
@@ -388,6 +386,53 @@ plot_bar(phyloPEASW_PA, fill="Class")+
 ggsave(filename = "Abun_PEASWpa_class.jpeg", plot=last_plot(), path ="PEA_RFTM/G_RFTM_pa/", width = 15, height = 10)
 
 
+---------------------------------------------------------------------------------------------------------------
+  
+###RFTM_pa_1_vs_0####
+#sigPA_rftm
+#write.table(sigPA_rftm, file="Log2Fold/RFTMpa_compLog.csv", quote=FALSE,sep = ",", col.names=T)
+
+
+RFTMpa_compLog <- read.csv("Log2Fold/RFTMpa_compLog.csv") 
+#Setting new tax table 
+RFTMpa_comp <- as.matrix(RFTMpa_comp) 
+colnames(RFTMpa_comp) <- c("X", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus.x","Genus.y","Species")
+rownames(RFTMpa_comp)
+#SEQUENCE 
+RFTMpa_comp <- tax_table(RFTMpa_comp)
+rownames(RFTMpa_comp) #SEQUENCE
+#INSPECTING SAMPLE NAMES
+sample_names(SAMP) #UniqueID
+sample_names(OTU) #UniqueID
+sample_names(RFTMpa_comp) #NULL
+phyloRFTM_PA <- phyloseq(OTU, RFTMpa_comp, SAMP) 
+phyloRFTM_PA
+
+
+
+###peacrabs.f_1_vs_0####
+#sigPA_pea
+
+###RFTM_pa1.peacrabs.f1####
+#sigPA_rftmpea
+
+###Site.x_OY_vs_NW####
+#sigPA_siteOYNW
+
+###sigPA_siteSWNW####
+#sigPA_siteSWNW
+
+###RFTM_pa1.Site.xOY####
+#sigPA_RFTMOY
+
+###RFTM_pa1.Site.xSW####
+#sigPA_RFTMSW
+
+###peacrabs.f1.Site.xOY####
+#sigPA_PeaOY
+
+###peacrabs.f1.Site.xSW####
+#sigPA_PeaSW
 
 
 
