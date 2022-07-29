@@ -308,6 +308,9 @@ resultsNames(ddsPA_PeasiteP)
 #Site.x_OY_vs_NW
 #Site.x_SW_vs_NW
 
+RFTM_pa1.peacrabs.f1
+
+
 ddsPA_PeasiteM <- phyloseq_to_deseq2(physeq, ~ peacrabs.f * Site.x)
 ddsPA_PeasiteM <- DESeq(ddsPA_PeasiteM, test="Wald", fitType="parametric")
 resultsNames(ddsPA_PeasiteM)
