@@ -37,7 +37,40 @@ names(sigPA_rftm)[names(sigPA_rftm) == "Genus.x"] <- "Genus"
 view(sigPA_rftm)
 dim(sigPA_rftm)
 #458 8
-write.table(sigPA_rftm, file="Log2Fold/RFTMpa_compLog.csv", quote=FALSE,sep = ",", col.names=T)
+write.table(sigPA_rftm, file="Log2Fold/RFTMpa_compLog.csv", quote=FALSE,sep = ",", col.names=NA)
+
+RFTMpa_compLog <- read.csv("Log2Fold/RFTMpa_compLog.csv") 
+view(RFTMpa_compLog)
+
+RFTMpa_LogClass <- table(RFTMpa_compLog$Class, useNA = "ifany")
+dim(RFTMpa_LogClass)
+view(RFTMpa_LogClass)
+
+#Filtering to the highest group == Gammaproteobacteria
+RFTMpa_ClassGamma <-  RFTMpa_compLog %>% filter(Class == "Gammaproteobacteria")
+view(RFTMpa_ClassGamma)
+dim(RFTMpa_ClassGamma)
+#115 
+write.table(RFTMpa_ClassGamma, file="Log2Fold/RFTMpa_ClassGammaproteobacteria.csv", quote=FALSE,sep = ",", col.names=NA)
+
+#Finding highest Family group in GammaPro
+table(RFTMpa_ClassGamma$Family, useNA = "ifany")
+
+#Filtering to the highest Family in Gammaproteobacteria == Vibrionaceae
+RFTMpa_FamVibri <-  RFTMpa_compLog %>% filter(Family == "Vibrionaceae")
+view(RFTMpa_FamVibri)
+dim(RFTMpa_FamVibri)
+#12
+write.table(RFTMpa_FamVibri, file="Log2Fold/RFTMpa_FamVibrionaceae.csv", quote=FALSE,sep = ",", col.names=NA)
+
+
+
+
+
+
+
+
+
 
 
 
