@@ -1,22 +1,39 @@
-#Adding in the Log2FoldChange Column
 
 
-#Testing with the main object
-physeqlog <- physeq
+#PeaCrabs Presence Absence ####
+#Variable: peacrabs.f_1_vs_0 
+#csv file: PresAbs_PEA_wLog.csv
+#Dimension: 265 9 
+#Phyloseq Object: PhyOb_PeaPA_wlog
 
-physeqlog_dds <- phyloseq_to_deseq2(physeqlog, ~RFTM_pa) 
-physeqlog_dds <- DESeq(physeqlog_dds, test="Wald", fitType="parametric")
-
-physeqlog_res= results(physeqlog_dds, cooksCutoff = FALSE)
+resPA_pea = results(ddsPA_rftmpeaM, cooksCutoff = FALSE, name="peacrabs.f_1_vs_0")
 alpha = 0.05
-physeqlog_sig = physeqlog_res[which(physeqlog_res$padj < alpha), ]
-physeqlog_sig = cbind(as(physeqlog_sig, "data.frame"), as(tax_table(physeqlog)[rownames(physeqlog_sig), ], "matrix"))
+sigPA_pea = resPA_pea[which(resPA_pea$padj < alpha), ]
+sigPA_pea = cbind(as(sigPA_pea, "data.frame"), as(tax_table(physeq)[rownames(sigPA_pea), ], "matrix"))
+sigPA_pea <- select(sigPA_pea, -baseMean, -lfcSE, -X, -stat, -pvalue, -padj, -Genus.y)
+names(sigPA_pea)[names(sigPA_pea) == "Genus.x"] <- "Genus"
+head(sigPA_pea)
+dim(sigPA_pea)
+write.table(sigPA_pea, file="Log2Fold/PresAbs_PEA_wLog.csv", quote=FALSE,sep = ",", col.names=NA)
 
-#Simplifying the columns and adding 
-view(physeqlog_sig)
-physeqlog_sig <- select(physeqlog_sig, -baseMean,-lfcSE, -stat, -pvalue, -padj, -Genus.y)
-names(physeqlog_sig)[names(physeqlog_sig) == "Genus.x"] <- "Genus"
-view(physeqlog_sig)
+PEApa_wLog <- read.csv("Log2Fold/PresAbs_PEA_wLog.csv") 
+PEApa_wLog_Tax <- as.matrix(PEApa_wLog)
+colnames(PEApa_wLog_Tax) <- c("Seq","log2FoldChange", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus","Species")
+rownames(PEApa_wLog_Tax)
+OTU=transform_sample_counts(OTU, function(x) 1E6 * x/sum(x))
+PhyOb_PeaPA_wlog = phyloseq(OTU, PEApa_wLog_Tax, SAMP) 
+PhyOb_PeaPA_wlog
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -74,20 +91,39 @@ write.table(RFTMpa_FamVibri, file="Log2Fold/RFTMpa_FamVibrionaceae.csv", quote=F
 
 
 
-###peacrabs.f_1_vs_0####
-resPA_pea = results(ddsPA_rftmpeaM, cooksCutoff = FALSE, name="peacrabs.f_1_vs_0")
-alpha = 0.05
-sigPA_pea = resPA_pea[which(resPA_pea$padj < alpha), ]
-sigPA_pea = cbind(as(sigPA_pea, "data.frame"), as(tax_table(physeq)[rownames(sigPA_pea), ], "matrix"))
-view(sigPA_pea)
-sigPA_pea <- select(sigPA_pea, -baseMean, -lfcSE, -X, -stat, -pvalue, -padj, -Genus.y)
-names(sigPA_pea)[names(sigPA_pea) == "Genus.x"] <- "Genus"
-view(sigPA_pea)
-dim(sigPA_pea)
-#265 8 
 
 
-###RFTM_pa1.peacrabs.f1####
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###RFTM_pa1.peacrabs.f1
 resPA_rftmpea = results(ddsPA_rftmpeaM, cooksCutoff = FALSE, name="RFTM_pa1.peacrabs.f1")
 alpha = 0.05
 sigPA_rftmpea = resPA_rftmpea[which(resPA_rftmpea$padj < alpha), ]
@@ -106,7 +142,7 @@ ddsPA_rftmsiteM <- DESeq(ddsPA_rftmsiteM, test="Wald", fitType="parametric")
 resultsNames(ddsPA_rftmsiteM)
 
 
-###Site.x_OY_vs_NW####
+###Site.x_OY_vs_NW
 resPA_siteOYNW = results(ddsPA_rftmsiteM, cooksCutoff = FALSE, name="Site.x_OY_vs_NW")
 alpha = 0.05
 sigPA_siteOYNW = resPA_siteOYNW[which(resPA_siteOYNW$padj < alpha), ]
@@ -119,7 +155,7 @@ dim(sigPA_siteOYNW)
 #313 8
 
 
-###sigPA_siteSWNW####
+###sigPA_siteSWNW
 resPA_siteSWNW = results(ddsPA_rftmsiteM, cooksCutoff = FALSE, name="Site.x_SW_vs_NW")
 alpha = 0.05
 sigPA_siteSWNW = resPA_siteSWNW[which(resPA_siteSWNW$padj < alpha), ]
@@ -132,7 +168,7 @@ dim(sigPA_siteSWNW)
 #295 8
 
 
-###RFTM_pa1.Site.xOY####
+###RFTM_pa1.Site.xOY
 resPA_RFTMOY = results(ddsPA_rftmsiteM, cooksCutoff = FALSE, name="RFTM_pa1.Site.xOY")
 alpha = 0.05
 sigPA_RFTMOY = resPA_RFTMOY[which(resPA_RFTMOY$padj < alpha), ]
@@ -145,7 +181,7 @@ dim(sigPA_RFTMOY)
 #184 8
 
 
-###RFTM_pa1.Site.xSW####
+###RFTM_pa1.Site.xSW
 resPA_RFTMSW = results(ddsPA_rftmsiteM, cooksCutoff = FALSE, name="RFTM_pa1.Site.xSW")
 alpha = 0.05
 sigPA_RFTMSW = resPA_RFTMSW[which(resPA_RFTMSW$padj < alpha), ]
@@ -164,7 +200,7 @@ ddsPA_PeasiteM <- phyloseq_to_deseq2(physeq, ~ peacrabs.f * Site.x)
 ddsPA_PeasiteM <- DESeq(ddsPA_PeasiteM, test="Wald", fitType="parametric")
 resultsNames(ddsPA_PeasiteM)
 
-###peacrabs.f1.Site.xOY####
+###peacrabs.f1.Site.xOY
 resPA_PeaOY = results(ddsPA_PeasiteM, cooksCutoff = FALSE, name="peacrabs.f1.Site.xOY")
 alpha = 0.05
 sigPA_PeaOY = resPA_PeaOY[which(resPA_PeaOY$padj < alpha), ]
@@ -176,7 +212,7 @@ view(sigPA_PeaOY)
 dim(sigPA_PeaOY)
 #50 8
 
-###peacrabs.f1.Site.xSW####
+###peacrabs.f1.Site.xSW
 resPA_PeaSW = results(ddsPA_PeasiteM, cooksCutoff = FALSE, name="peacrabs.f1.Site.xSW")
 alpha = 0.05
 sigPA_PeaSW = resPA_PeaSW[which(resPA_PeaSW$padj < alpha), ]

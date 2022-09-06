@@ -26,6 +26,8 @@ phyloPEA_PA <- phyloseq(OTU, PEApa_comp, SAMP)
 phyloPEA_PA
 
 
+
+
 ##RFTM_pa1.peacrabs.f1 
 RFTMPEApa_comp <- read.csv("Reduced Tax Tables/PresAbs_RFTMPEA_COMP.csv") 
 RFTMPEApa_comp <- as.matrix(RFTMPEApa_comp) 
